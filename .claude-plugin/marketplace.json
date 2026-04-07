@@ -1,0 +1,28 @@
+{
+  "name": "meeting-kit",
+  "owner": {
+    "name": "harry",
+    "email": "harry@querypie.com"
+  },
+  "metadata": {
+    "description": "Live meeting capture + real-time analysis for foreign-language meetings",
+    "version": "0.2.0"
+  },
+  "plugins": [
+    {
+      "name": "meeting-kit",
+      "source": "./",
+      "description": "Capture screenshots and translated text from live foreign-language meetings, with immediate per-capture analysis (gist, new terms, translation corrections, context links). Bonus post-meeting full review and cumulative cross-meeting glossary.",
+      "category": "productivity",
+      "tags": [
+        "meeting",
+        "capture",
+        "translation",
+        "japanese",
+        "live-notes",
+        "glossary",
+        "real-time-analysis"
+      ]
+    }
+  ]
+}
