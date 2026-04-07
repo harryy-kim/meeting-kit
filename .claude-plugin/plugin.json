@@ -1,0 +1,30 @@
+{
+  "name": "meeting-kit",
+  "version": "0.1.0",
+  "description": "Live meeting capture + analysis toolkit. Capture screenshots and translated text from foreign-language meetings, then summarize, analyze, and build a cumulative glossary across meetings.",
+  "author": {
+    "name": "harry"
+  },
+  "license": "MIT",
+  "keywords": [
+    "meeting",
+    "capture",
+    "translation",
+    "japanese",
+    "live-notes",
+    "glossary",
+    "analysis"
+  ],
+  "skills": [
+    "skills/cap",
+    "skills/review",
+    "skills/ask",
+    "skills/glossary",
+    "skills/recap",
+    "skills/meetings"
+  ],
+  "agents": [
+    "agents/meeting-analyzer.md",
+    "agents/glossary-extractor.md"
+  ]
+}
