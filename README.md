@@ -33,7 +33,7 @@
 
 | 에이전트 | 호출자 | 역할 |
 |---|---|---|
-| `meeting-analyzer` | `review` | 미팅 폴더 전체를 읽고 analysis.md 작성 (사진 embed + mermaid 다이어그램) |
+| `meeting-analyzer` | `meeting-review` | 미팅 폴더 전체를 읽고 analysis.md 작성 (사진 embed + mermaid 다이어그램) |
 | `glossary-extractor` | `glossary extract` | notes.md에서 전문 용어 추출하여 _glossary.md에 병합 |
 
 에이전트는 별도 컨텍스트에서 무거운 작업을 처리하여 메인 세션을 보호한다.
@@ -161,7 +161,7 @@ Claude Code 새 세션 시작 후:
 
 ## 응답 길이 원칙
 
-미팅 중 사용 스킬(`cap`, `ask`, `recap`)은 **5줄 이내** 응답이 원칙. 사용자는 화면을 길게 못 본다. 자세한 내용은 `/review`로 분리.
+미팅 중 사용 스킬(`cap`, `ask`, `recap`)은 **5줄 이내** 응답이 원칙. 사용자는 화면을 길게 못 본다. 자세한 내용은 `/meeting-review`로 분리.
 
 ## 디자인 결정
 

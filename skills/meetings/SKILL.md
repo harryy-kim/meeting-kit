@@ -7,7 +7,7 @@ description: |
 
   WHEN: "/meetings", "미팅 목록", "지금까지 어떤 미팅", "list meetings",
         "활성 미팅 뭐야", "어떤 미팅이 있었지"
-  WHEN NOT: 특정 미팅 분석(→ review), 캡처(→ cap)
+  WHEN NOT: 특정 미팅 분석(→ meeting-review), 캡처(→ cap)
 triggers:
   - /meetings
   - 미팅 목록
@@ -62,7 +62,7 @@ allowed-tools:
 
 목록 아래에 한 줄 안내:
 ```
-💡 분석: /review {이름}  |  활성 변경: /cap new {이름}
+💡 분석: /meeting-review {이름}  |  활성 변경: /cap new {이름}
 ```
 
 ## 인자 처리

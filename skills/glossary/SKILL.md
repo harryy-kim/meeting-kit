@@ -8,7 +8,7 @@ description: |
 
   WHEN: "/glossary", "용어 사전", "용어 추가해줘", "이 용어 저장해줘",
         "glossary에 ~~추가", "용어 검색", "지금까지 나온 용어들 보여줘"
-  WHEN NOT: 한 미팅 분석(→ review), 즉석 용어 질문(→ ask), 캡처(→ cap)
+  WHEN NOT: 한 미팅 분석(→ meeting-review), 즉석 용어 질문(→ ask), 캡처(→ cap)
 triggers:
   - /glossary
   - 용어 사전
@@ -33,7 +33,7 @@ allowed-tools:
 
 같은 일본어 미팅에 반복 참여하면 같은 전문 용어가 계속 나온다. 한 번 정리해두면:
 - 다음 미팅에서 즉시 참조 가능 (이해도 누적)
-- 분석(`review`) 시 일관된 용어 정의 사용 가능
+- 분석(`meeting-review`) 시 일관된 용어 정의 사용 가능
 - 번역기 오인 케이스 영구 저장 가능 (예: "바리섬" → 실제 "Varit")
 
 **파일 위치**: `~/meetings/_glossary.md` (모든 미팅 공유)

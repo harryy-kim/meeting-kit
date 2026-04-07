@@ -1,22 +1,23 @@
 ---
-name: review
+name: meeting-review
 description: |
   미팅 종료 후 전체 분석 리포트를 생성하는 스킬.
   notes.md(캡처) + context.md(배경) + 슬라이드 이미지를 모두 종합하여
   요약/토픽/용어 사전/결정 사항/열린 질문/액션 아이템을 포함한 analysis.md를 생성한다.
   관련 슬라이드 이미지를 embed하고 필요시 mermaid 다이어그램도 생성하여 이해를 돕는다.
   무거운 분석은 meeting-analyzer 서브에이전트에 위임하여 메인 컨텍스트를 보호한다.
+  코드 PR 리뷰가 아닌 외국어 미팅 분석 전용. (PR 리뷰는 별도 review 스킬 사용)
 
-  WHEN: "/review", "분석해줘", "미팅 정리해줘", "오늘 미팅 어땠어", "전체 분석",
-        review meeting, 미팅 분석, 미팅 후 정리, recap 다음 단계
-  WHEN NOT: 미팅 중 짧은 요약(→ recap), 특정 용어 질문(→ ask), 캡처(→ cap)
+  WHEN: "/meeting-review", "미팅 분석해줘", "미팅 정리해줘", "오늘 미팅 어땠어",
+        "미팅 전체 분석", "미팅 후 정리", "외국어 미팅 정리"
+  WHEN NOT: 미팅 중 짧은 요약(→ recap), 특정 용어 질문(→ ask), 캡처(→ cap),
+            코드/PR 리뷰(→ review)
 triggers:
-  - /review
-  - 분석해줘
+  - /meeting-review
   - 미팅 분석
-  - 전체 분석
   - 미팅 정리
-  - review meeting
+  - 미팅 전체 분석
+  - 미팅 후 정리
 argument-hint: "[meeting-name 또는 비워두면 가장 최근/활성 미팅]"
 allowed-tools:
   - Read
