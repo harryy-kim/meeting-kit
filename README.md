@@ -52,7 +52,7 @@
 ├── 2026-04-07-mitsui-q2/
 │   ├── notes.md                       # 캡처 (시간순 슬라이드 + 발화)
 │   ├── context.md                     # 미팅 배경 (선택, 채우면 분석 품질 ↑)
-│   ├── analysis.md                    # /review 결과
+│   ├── analysis.md                    # /meeting-review 결과
 │   └── images/
 │       ├── slide-01.png
 │       └── slide-02.png
@@ -63,21 +63,24 @@
 
 ## 설치
 
-### Claude Code에서
+Claude Code 슬래시 명령으로 marketplace 등록 → 플러그인 설치:
 
-```bash
-# git clone
-git clone https://github.com/{username}/meeting-kit.git ~/dev/meeting-kit
-
-# 플러그인 디렉토리에 심볼릭 링크
-ln -s ~/dev/meeting-kit ~/.claude/plugins/meeting-kit
+```
+/plugin marketplace add https://github.com/harryy-kim/meeting-kit
+/plugin install meeting-kit@meeting-kit
 ```
 
-또는 marketplace.json을 통해 설치 (TBD).
+(Claude Code 버전에 따라 형식이 다를 수 있으니 안 되면 `/plugin --help` 참고)
+
+### 업데이트
+
+```
+/plugin update meeting-kit
+```
 
 ### 동작 확인
 
-Claude Code 새 세션 시작 후:
+설치 후 새 세션에서:
 ```
 /meetings
 ```
@@ -98,23 +101,33 @@ Claude Code 새 세션 시작 후:
 → 📋 context 저장됨
 ```
 
-### 미팅 중 캡처
+### 미팅 중 캡처 (저장 + 즉시 분석)
 
 ```
-사용자: [스크린샷 드래그] /cap 발표자가 Varit 설계 프로세스 설명 시작
+사용자: [스크린샷 드래그] /cap
 
-→ 📸 슬라이드 1 + 발화 저장
+→ 📸 슬라이드 01 저장 (13:31)
+
+  📊 슬라이드: Calcu 영역 초기 도입 플로우 (요건 정의~사양 설계 단계)
+  💭 요지: 발표자가 Varit 설계 프로세스를 소개하려는 시점
 
 사용자: /cap 변동 데이터는 그 달에만 쓰는 데이터를 의미한다고 함
 
-→ 📝 추가 → 슬라이드 1
+→ 📝 추가 → 슬라이드 01 (13:33)
 
-사용자: /cap 그게 뭔지 한 줄로
+  💭 요지: Varit이 다루는 "변동 데이터"의 정의 — 단발성 월별 데이터
+  🆕 새 용어: 変動データ (월별 변동 데이터, 예: 특별 수당/근태)
+              ← 글로서리 적립하려면 /glossary add
 
-→ (ask 스킬 자동 활성화)
-  Varit (バリット): 월별 변동 데이터 입력 영역. 특별 수당, 근태 등 그 달에만 쓰이는 데이터를 받는 입구.
-  💡 글로서리에 저장하려면 "글로서리에 추가" 라고 하세요
+사용자: /cap この機能は実は経産省じゃなくて計算仕様書のことです
+
+→ 📝 추가 → 슬라이드 01 (13:35)
+
+  💭 요지: 앞 발화 정정 — "경산성"이 아니라 "계산 사양서"
+  ⚠️ 번역 의심: "경산성/경산" → 실제 "計算 사양서" (経産↔計算 한자 동음 오인)
 ```
+
+분석 항목은 해당 사항이 있을 때만 출력. 새 용어 없으면 🆕 줄 생략 등.
 
 ### 미팅 중간 요약
 
@@ -129,10 +142,10 @@ Claude Code 새 세션 시작 후:
   🔑 핵심: Varit은 경산 사양서 확정 후 착수
 ```
 
-### 미팅 종료 후 분석
+### 미팅 종료 후 분석 (보너스)
 
 ```
-사용자: /review
+사용자: /meeting-review
 
 → (meeting-analyzer 에이전트 호출)
   ✅ 분석 완료 → ~/meetings/2026-04-07-mitsui-q2/analysis.md
@@ -165,7 +178,12 @@ Claude Code 새 세션 시작 후:
 
 ## 응답 길이 원칙
 
-미팅 중 사용 스킬(`cap`, `ask`, `recap`)은 **5줄 이내** 응답이 원칙. 사용자는 화면을 길게 못 본다. 자세한 내용은 `/meeting-review`로 분리.
+미팅 중 사용자는 화면을 길게 못 본다. 그래서:
+
+- **`cap`** (저장 + 분석): **5~7줄** — 저장 1줄 + 분석 항목 (해당 시만)
+- **`ask`, `recap`**: **5줄 이내**
+- **`/cap new`, `/cap context`**: **1~2줄** (분석할 게 없으므로)
+- **`meeting-review`**: 길어도 OK (미팅 종료 후 사용)
 
 ## 디자인 결정
 
@@ -175,12 +193,13 @@ Claude Code 새 세션 시작 후:
 - **다이어그램 자동 생성**: 시스템 관계나 프로세스가 복잡하면 mermaid 다이어그램으로 시각화.
 - **글로서리 누적**: 같은 미팅 시리즈에서 이해도가 누적되도록.
 
-## 로드맵 (잠재적 v0.2+)
+## 로드맵 (잠재적 v0.3+)
 
 - `/cap end` — 미팅 명시적 종료 (종료 시각 기록)
 - `/cap fix` — 번역기 오인 구간 사후 보정
 - `/cap export` — Obsidian/PDF/Notion 내보내기
 - `/cap prep` — 다음 미팅 전 관련 과거 미팅 자동 브리핑
+- context 상속 (`/cap new mitsui-q3 --inherit mitsui-q2`) — 같은 시리즈 미팅
 - 자동 글로서리 추출 (capture 시 백그라운드)
 
 ## 라이선스
