@@ -1,7 +1,7 @@
 {
   "name": "meeting-kit",
-  "version": "0.1.0",
-  "description": "Live meeting capture + analysis toolkit. Capture screenshots and translated text from foreign-language meetings, then summarize, analyze, and build a cumulative glossary across meetings.",
+  "version": "0.2.0",
+  "description": "Live meeting capture + real-time analysis toolkit. Each capture saves the screenshot/translated text AND immediately provides a short analysis (gist, new terms, translation corrections, context links). Built for non-native speakers using realtime translation apps to follow technical meetings in real time. Includes cumulative glossary across meetings and bonus post-meeting full review.",
   "author": {
     "name": "harry"
   },
