@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "Live meeting capture + real-time analysis for foreign-language meetings",
-    "version": "0.2.0"
+    "version": "0.2.1"
   },
   "plugins": [
     {

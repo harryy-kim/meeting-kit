@@ -1,10 +1,13 @@
 {
   "name": "meeting-kit",
-  "version": "0.2.0",
-  "description": "Live meeting capture + real-time analysis toolkit. Each capture saves the screenshot/translated text AND immediately provides a short analysis (gist, new terms, translation corrections, context links). Built for non-native speakers using realtime translation apps to follow technical meetings in real time. Includes cumulative glossary across meetings and bonus post-meeting full review.",
+  "description": "Live meeting capture + real-time analysis for foreign-language meetings. Each capture saves the screenshot/translated text AND immediately provides a short analysis (gist, new terms, translation corrections, context links). Built for non-native speakers using realtime translation apps to follow technical meetings in real time. Includes cumulative glossary across meetings and bonus post-meeting full review.",
+  "version": "0.2.1",
   "author": {
-    "name": "harry"
+    "name": "harry",
+    "email": "harry@querypie.com"
   },
+  "homepage": "https://github.com/harryy-kim/meeting-kit",
+  "repository": "https://github.com/harryy-kim/meeting-kit",
   "license": "MIT",
   "keywords": [
     "meeting",
@@ -13,18 +16,7 @@
     "japanese",
     "live-notes",
     "glossary",
-    "analysis"
-  ],
-  "skills": [
-    "skills/cap",
-    "skills/meeting-review",
-    "skills/ask",
-    "skills/glossary",
-    "skills/recap",
-    "skills/meetings"
-  ],
-  "agents": [
-    "agents/meeting-analyzer.md",
-    "agents/glossary-extractor.md"
+    "real-time-analysis",
+    "claude-code"
   ]
 }
