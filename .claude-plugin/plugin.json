@@ -1,7 +1,7 @@
 {
   "name": "meeting-kit",
-  "description": "Live meeting capture + real-time analysis for foreign-language meetings. Each capture saves the screenshot/translated text AND immediately provides a short analysis (gist, new terms, translation corrections, context links). Built for non-native speakers using realtime translation apps to follow technical meetings in real time. Includes cumulative glossary across meetings and bonus post-meeting full review.",
-  "version": "0.3.0",
+  "description": "Live meeting capture + real-time analysis for foreign-language meetings. Each capture saves the screenshot/translated text AND immediately provides a short analysis (gist, new terms, translation corrections, context links). Built for non-native speakers using realtime translation apps to follow technical meetings in real time. Includes cumulative glossary, post-meeting full review, internal-share presentation deck and speaker script generation.",
+  "version": "0.4.0",
   "author": {
     "name": "harry",
     "email": "harry@querypie.com"
